@@ -1,0 +1,38 @@
+<h2>Edit Account</h2>
+<p>アカウントの編集</p>
+
+<%= form_with model: resource, as: resource_name, url: registration_path(resource_name), method: :put do |f| %>
+
+  <div>
+    <%= f.label :name, "Name" %><br>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :email, "Email" %><br>
+    <%= f.email_field :email %>
+  </div>
+
+ <div>
+  <%= f.label :current_password, "現在のパスワード（必須）" %><br>
+  <%= f.password_field :current_password %>
+</div>
+
+<div>
+  <%= f.label :password, "新しいパスワード（変更しない場合は空欄）" %><br>
+  <%= f.password_field :password %>
+</div>
+
+<div>
+  <%= f.label :password_confirmation, "新しいパスワード（確認用）" %><br>
+  <%= f.password_field :password_confirmation %>
+</div>
+  
+  <div>
+    <%= f.submit "Update" %>
+  </div>
+
+<% end %>
+
+<%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete } %>
+<%= link_to "チャットページに戻る", root_path %>
