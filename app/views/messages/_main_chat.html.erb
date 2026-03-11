@@ -12,30 +12,8 @@
 </div>
 
 <div class="messages">
-  <% @messages.each do |message| %>
-    <div class="message">
-      <div class="upper-message">
-        <div class="message-user">
-          <%= message.user.name %> 
-        </div>
-        <div class="message-date">
-          <%= l message.created_at %>
-        </div>
-      </div>
-
-      <div class="lower-message">
-        <div class="message-content">
-          <%= message.content %>
-        </div>
-
-        <% if message.image.attached? %>
-          <div class="message-image">
-            <%= image_tag message.image %>
-          </div>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
+  <%= render partial: 'message', collection: @messages %>
+    
 </div>
 
 <%= form_with model: [@room, @message], html: {class: "form"}, local: true do |f| %>
