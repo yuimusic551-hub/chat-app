@@ -1,18 +1,24 @@
 <div class="side-bar-header">
   <div class="header-name">
-    <%= link_to current_user.name, edit_user_path(current_user) %>
+    <% if user_signed_in? %>
+      <%= link_to current_user.name, edit_user_path(current_user) %>
+    <% end %>
   </div>
   <div class="create-room">
-    <%= link_to "チャットを作成する", new_room_path %>
+    <% if user_signed_in? %>
+      <%= link_to "チャットを作成する", new_room_path %>
+    <% end %>
   </div>
 </div>
 
 <div class="rooms">
-  <% current_user.rooms.each do |room| %>
-    <div class="room">
-      <div class="room-name">
-        <%= link_to room.name, room_messages_path(room) %>
+  <% if user_signed_in? %>
+    <% current_user.rooms.each do |room| %>
+      <div class="room">
+        <div class="room-name">
+          <%= link_to room.name, room_messages_path(room) %>
+        </div>
       </div>
-    </div>
+    <% end %>
   <% end %>
 </div>
